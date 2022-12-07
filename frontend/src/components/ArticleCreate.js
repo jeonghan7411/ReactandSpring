@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ArticleService from "../services/ArticleService";
 
 const ArticleCreate = () => {
@@ -6,10 +7,19 @@ const ArticleCreate = () => {
   const [writer, setWriter] = useState("");
   const [content, setContent] = useState("");
 
-  // /create-article/_add : 저장  그 외에는 전부 수저응로 처리
+  const navigate = useNavigate();
+
+  // /create-article/_add : 저장  그 외에는 전부 수정으로 처리
   const saveOrUpdateArticle = (e) => {
     e.preventDefault();
     //저장
+    // {} = [] = 객체명 같은 것
+    //{subject,writer,content}  == ArticleService에서 바든 매개변수 article 같은 말
+    ArticleService.createArticle({ subject, writer, content }).then(
+      (response) => {
+        navigate("/");
+      }
+    );
 
     //수정
   };
@@ -17,7 +27,7 @@ const ArticleCreate = () => {
   return (
     <div>
       <h1>Create Article</h1>
-      <form action={saveOrUpdateArticle} method="post">
+      <form onSubmit={saveOrUpdateArticle} method="post">
         <div>
           <label>Subject : </label>
           <input

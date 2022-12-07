@@ -15,8 +15,8 @@ class ArticleService {
     return axios.get(SPRING_URL);
   }
   //저장하기
-  createArticle() {
-    return axios.post(SPRING_URL);
+  createArticle(article) {
+    return axios.post(SPRING_URL, article);
   }
 
   //하나만 가져오기

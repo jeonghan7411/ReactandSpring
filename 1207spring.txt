@@ -1,0 +1,32 @@
+Spring + reactJS
+node + react 똑같다고 생각하면 됨
+
+===================================
+https://start.spring.io/ 
+
+maven  > java > project 이름 > jar > 17
+
+Dependencies
+
+Spring Web
+Spring Data JPA
+My SQL
+Lombok 
+
+압출 푹고 back 폴더에 넣기
+
+
+front   폴더
+React설치
+npx create-react-app .
+npm i axios react-router-dom moment
+
+
+recat > db > spring > sp + react
+
+entity : 테이블 이름과 동일한 클래스 파일
+repositoy : 작업명 Repositoy
+service : 작업명 Service : 인터페이스
+	작업명 ServiceImpl : 구현
+controller
+
