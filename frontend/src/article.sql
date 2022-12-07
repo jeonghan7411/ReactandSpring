@@ -26,3 +26,5 @@ create table article(
   ip varchar(255),
   regdate datetime
 );
+
+
