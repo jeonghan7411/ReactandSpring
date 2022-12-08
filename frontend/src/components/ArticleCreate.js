@@ -1,32 +1,40 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import ArticleService from "../services/ArticleService";
 
 const ArticleCreate = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
+
   const [subject, setSubject] = useState("");
   const [writer, setWriter] = useState("");
   const [content, setContent] = useState("");
-
-  const navigate = useNavigate();
 
   // /create-article/_add : 저장  그 외에는 전부 수정으로 처리
   const saveOrUpdateArticle = (e) => {
     e.preventDefault();
     //저장
-    // {} = [] = 객체명 같은 것
-    //{subject,writer,content}  == ArticleService에서 바든 매개변수 article 같은 말
-    ArticleService.createArticle({ subject, writer, content }).then(
-      (response) => {
-        navigate("/");
-      }
-    );
-
-    //수정
+    if (id === "add") {
+      // {} = [] = 객체명 같은 것
+      //{subject,writer,content}  == ArticleService에서 바든 매개변수 article 같은 말
+      ArticleService.createArticle({ subject, writer, content }).then(
+        (response) => {
+          navigate("/");
+        }
+      );
+    } else {
+      //수정
+      ArticleService.updateArticle({ subject, writer, content }, id).then(
+        (response) => {
+          navigate("/");
+        }
+      );
+    }
   };
 
   return (
     <div>
-      <h1>Create Article</h1>
+      {id === "add" ? <h3>ADD Article</h3> : <h3>EDIT Article</h3>}
       <form onSubmit={saveOrUpdateArticle} method="post">
         <div>
           <label>Subject : </label>
@@ -59,8 +67,15 @@ const ArticleCreate = () => {
             required
           ></textarea>
         </div>
-        <button type="submit">Save</button>
-        <button type="button">Cancel</button>
+        <button type="submit">{id === "add" ? "SAVE" : "EDIT"}</button>
+        <button
+          type="button"
+          onClick={() => {
+            window.history.back();
+          }}
+        >
+          Cancel
+        </button>
       </form>
     </div>
   );

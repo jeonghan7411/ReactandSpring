@@ -1,4 +1,5 @@
-Spring + reactJS
+SpringBoot(lombok) + reactJS
+lombok 을 사용하면 편하게 작업이 가능함 
 node + react 똑같다고 생각하면 됨
 
 ===================================
@@ -25,8 +26,38 @@ npm i axios react-router-dom moment
 recat > db > spring > sp + react
 
 entity : 테이블 이름과 동일한 클래스 파일
-repositoy : 작업명 Repositoy
+repositoy : 작업명 Repositoy DB 동작 (저장,수정,삭제,보기)
 service : 작업명 Service : 인터페이스
 	작업명 ServiceImpl : 구현
-controller
+controller : 주소나 데이터 전달
 
+
+=============================
+만약 같은 포트를 써야 할 경우
+
+찾는 포트번호
+netstat -ano | find "8899"  찾고  LISTENING 부분을 PID에 적어줌
+taskkill /F /PID 11784
+
+=============================
+Spring : react 개발이 완료 되기전 html 대신 프로그램(Postman)
+
+파일 저장위치는 상관없다. 현재 저장위치는 backend > src>resources > http.rest 파일
+입력,수정,삭제,보기(Rest API) 등
+- Postman 으로 미리테스트 해 볼 수있지만 많은 기능과 느리고 설치해야함 (GUI 그래픽)
+- 비슷한걸로 Restful client library : vscode에 설치 속도 빠르고 편하지만  (CUI 글자)
+
+파일을 하나 만들고 필요한 요청을해본다 실행은 코드위에 Send Request를 누른다. 이게 없으면 껏다 켜보기
+ex) GET http://localhost:8888/주소~~
+한줄 끝나면 ### 으로 구분해줘야함
+
+post 입력 일 경우 json 타입으로 해줘야함 
+Content-Type: application/json
+
+================================
+
+JPA ( Hibernate)
+SQL 명령어가 달라 -> Java 프로그래밍으로 처리
+Java + Mysql
+Java + Oracle
+Java + MongoDB

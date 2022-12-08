@@ -22,15 +22,15 @@ public class ArticleController {
 
     @PostMapping("/article")  // 저장
     //subject,content,writer , .... 등등 저장되니깐
-    //객체 타입으로 변수를 가져와서 저장하기
+    //객체 타입으로 변수를 가져와서 저장하기 JSON 형식이라서 @RequestBody 로 받아야함
     public Article createArticle(@RequestBody Article article){ //매소드에는 타입과 변수명
         return articleService.createArticle(article);
     }
 
-//    @PutMapping("/article")
 
     @DeleteMapping("/article/{id}") // 주소/id값 -> @PathVariable
     public void deleteArticle(@PathVariable long id){
         articleService.deleteArticle(id);
     }
+
 }

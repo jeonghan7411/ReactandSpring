@@ -14,24 +14,24 @@ class ArticleService {
   getArticles() {
     return axios.get(SPRING_URL);
   }
+
+  //하나만 가져오기
+  getArticleById(article) {
+    return axios.get(SPRING_URL, article);
+  }
   //저장하기
   createArticle(article) {
     return axios.post(SPRING_URL, article);
   }
 
-  //하나만 가져오기
-  getArticleById() {
-    return axios.get(SPRING_URL);
-  }
-
   //수정하기
-  updateArticle() {
-    return axios.put(SPRING_URL);
+  updateArticle(article) {
+    return axios.put(SPRING_URL, article);
   }
 
   //삭제하기
-  deleteArticle() {
-    return axios.delete(SPRING_URL);
+  deleteArticle(articleID) {
+    return axios.delete(SPRING_URL + "/" + articleID);
   }
 }
 

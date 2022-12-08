@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<ArticleList />} />
-        <Route path="/create-article" element={<ArticleCreate />} />
+        <Route path="/create-article/:id" element={<ArticleCreate />} />
       </Routes>
       <Footer />
     </BrowserRouter>
