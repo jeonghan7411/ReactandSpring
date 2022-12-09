@@ -1,9 +1,5 @@
 GET http://localhost:8899/api/article
-
-
 ###
-
-
 POST http://localhost:8899/api/article
 Content-Type: application/json
 
@@ -14,8 +10,21 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8899/api/article/8
+DELETE http://localhost:8899/api/article/12
+
+###
+GET http://localhost:8899/api/article/12
+
+###
+GET http://localhost:8899/api/article/11
 
 ###
 
-GET http://localhost:8899/api/article/12
+PUT http://localhost:8899/api/article/11
+Content-Type: application/json
+
+{
+  "subject" : "aaa",
+  "writer" : "sss",
+  "content" : "mmm"
+}

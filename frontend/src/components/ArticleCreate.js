@@ -32,6 +32,16 @@ const ArticleCreate = () => {
     }
   };
 
+  useEffect(() => {
+    if (id !== "add") {
+      ArticleService.getArticleById(id).then((response) => {
+        setSubject(response.data.subject);
+        setWriter(response.data.writer);
+        setContent(response.data.content);
+      });
+    }
+  }, [id]);
+
   return (
     <div>
       {id === "add" ? <h3>ADD Article</h3> : <h3>EDIT Article</h3>}

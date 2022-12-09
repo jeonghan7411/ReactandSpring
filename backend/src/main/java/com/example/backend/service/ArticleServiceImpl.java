@@ -38,7 +38,20 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Override
     public Article updateArticle(Article article, long id) {
-        return null;
+        //ReactJs에서 넘어온 자료를 저장하기 위한 Model (entity) 을 초기화 후
+        //자료 저장을 하기 위해서는 getter,setter 를 이용해서 임시 메모리에 저장
+        //저장할 때는 get()을 이용해서 가져와서  -> set()을 이용해서 저장
+        //db에 저장
+        //데이터 타입 변수명 = 생성자
+        Article newArticle = new Article();
+        //get은 리엑트에서 가져온거, set은 spring에 저장하는 거
+        newArticle.setId(id);
+        newArticle.setSubject(article.getSubject());
+        newArticle.setWriter(article.getWriter());
+        newArticle.setContent(article.getContent());
+
+
+        return articleRepository.save(newArticle);
     }
 
     @Override

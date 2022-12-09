@@ -16,8 +16,8 @@ class ArticleService {
   }
 
   //하나만 가져오기
-  getArticleById(article) {
-    return axios.get(SPRING_URL, article);
+  getArticleById(articleID) {
+    return axios.get(SPRING_URL + "/" + articleID);
   }
   //저장하기
   createArticle(article) {
@@ -25,8 +25,8 @@ class ArticleService {
   }
 
   //수정하기
-  updateArticle(article) {
-    return axios.put(SPRING_URL, article);
+  updateArticle(article, articleID) {
+    return axios.put(SPRING_URL + "/" + articleID, article);
   }
 
   //삭제하기
